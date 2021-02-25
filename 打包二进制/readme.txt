@@ -1,0 +1,1 @@
+cxfreeze mod_config.py --target-dir ./dist

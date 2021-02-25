@@ -1,0 +1,26 @@
+一、创建
+$ gpg --gen-key
+
+二、查看公钥
+$ gpg --list-key
+
+三、查看私钥
+$ gpg --list-secret-key
+
+四、公钥删除
+$ gpg --delete-keys 标识名
+
+五、私钥删除
+$ gpg --delete-secret-keys 标识名
+
+六、公钥导出
+$ gpg --export 标识名 > 导出文件名（多以asc为文件后缀）
+
+七、私钥导出
+$ gpg --export-secret-key 标识名 > 导出文件名（多以asc为文件后缀）
+
+八、密钥导入
+$ gpg --import 密钥文件
+
+十一、修改密钥
+$ gpg --edit-key 标识名

@@ -1,0 +1,14 @@
+2015-12-10 15:26:59,406    INFO    STDOUT    Test to standard out...
+2015-12-10 15:26:59,406    ERROR    STDERR    Traceback (most recent call last):
+2015-12-10 15:26:59,406    ERROR    STDERR      File "log.py", line 34, in <module>
+2015-12-10 15:26:59,406    ERROR    STDERR    raise Exception('Test to standard error')
+2015-12-10 15:26:59,407    ERROR    STDERR    Exception
+2015-12-10 15:26:59,407    ERROR    STDERR    :
+2015-12-10 15:26:59,407    ERROR    STDERR    Test to standard error
+2015-12-10 15:27:06,854    INFO    STDOUT    Test to standard out...
+2015-12-10 15:27:06,854    ERROR    STDERR    Traceback (most recent call last):
+2015-12-10 15:27:06,854    ERROR    STDERR      File "log.py", line 34, in <module>
+2015-12-10 15:27:06,854    ERROR    STDERR    raise Exception('Test to standard error')
+2015-12-10 15:27:06,856    ERROR    STDERR    Exception
+2015-12-10 15:27:06,856    ERROR    STDERR    :
+2015-12-10 15:27:06,856    ERROR    STDERR    Test to standard error

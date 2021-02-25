@@ -1,0 +1,115 @@
+Index
+
+   1. Introduction
+   2. Install
+   3. User Guide
+         1. Implemented methods
+         2. Example 
+
+Introduction
+
+PySamba is a full wrapper based in the work of Tim Potter. In fact, PySamba 
+is built as a Python C extension over the cli library provided with 
+samba-3.0.24 and a Python module that hides the complexity of the lower 
+layer (smb) providing high-level commands like Mkdir or DiskAvail. At now, 
+PySamba provides a fully functional samba wrapper, allowing the developer 
+to interface any samba-capable device much like python's ftplib does. PySamba
+has been written by Juan M. Casillas <juanm.casillas@jmcresearch.com> and
+released under GNU GPL public License.
+
+You need a gcc compiler, a python running environment (tested with 2.4.3) and
+the samba-3.0.24 sources. PySamba Has been developed under an UNIX environment
+(HP-UX) and tested against native NT shares.
+
+
+Install
+
+See the INSTALL file, but the installation process is the following:
+  o Get Samba-3.0.24 and uncompress it.
+  o Copy py_smb.c and py_smb.h into 
+    samba-3.0.24/source/python replacing the existing files
+  o Go to samba-3.0.24/source and issue a 
+    configure --with-python=python. 
+    Then make , make install, make python_ext, 
+    make install This will install python's dynamic library.
+  o Import pysamba from the directory where pysamba is, 
+    or copy it to any place under the PYTHONPATH
+  o You're ready 
+
+User Guide
+
+The implemented methods in class pysamba.SMBManager are:
+
+          o __init__(self, host, res, user, passwd, domain)
+          o Connect(self)
+          o DiskAvail(self)
+          o List(self,dir)
+          o DirSize(self, dirn=None)
+          o GetDir(self, remote, local)
+          o PutDir(self, local, remote)
+          o GetFile(self,remote,local, createdirs=False)
+          o Chdir(self, dir)
+          o PutFile(self,local,remote)
+          o Pwd(self)
+          o Unlink(self, fname)
+          o Exists(self, fname)
+          o Mkdir(self, dirname, parent=False)
+          o Rmdir(self, dirname, force=False)
+          o PrettyList(self,dir=None) 
+
+      __init__(self, host, res, user, passwd, domain)
+      Initializes the connection with the server host, mapping
+       the resource res, with user user identified by passwd in domain domain
+
+      Connect(self)
+      Connects to the server (applies the data passed in __init__
+
+      DiskAvail
+      Shows the space available in the share, in bytes
+
+      List(self,dir)
+      Lists the directory dir Format is \\dir (windows style)
+
+      DirSize(self, dirn=None)
+      Calculates the disk space ocuppied by dirn, in bytes. if dirn 
+      is None, DirSize calculates the space for the current 
+      working directory (set with Chdir)
+
+      GetDir(self, remote, local)
+      Download the directory remote inside local.
+      (e.g. GetDir("\\share\\img", "/tmp/") creates /tmp/img)
+
+      PutDir(self, local, remote)
+      Upload the directory local inside remote.
+      (e.g. PutDir("/tmp/img", "\\share") creates \\share\\img)
+
+      GetFile(self,remote,local, createdirs=False)
+      Download the fileremote inside local.
+      (e.g. GetFile("\\share\\img.png", "/tmp/") creates /tmp/img.png)
+
+      PutFile(self,local,remote)
+      Upload the file local inside remote.
+      (e.g. PutFile("/tmp/img.png", "\\share") creates \\share\\img.png)
+
+      Chdir(self, dir)
+      Changes to directory dir
+      (e.g. Chdir("\\share\\images")
+
+      Pwd(self)
+      Prints the "current working directory" in the share
+
+      Unlink(self, fname)
+      Deletes file fname
+
+      Exists(self, fname)
+      Checks if fname exists.
+
+      Mkdir(self, dirname, parent=False)
+      Creates directory dirname. If parent is True, all the 
+      intermediate directories are created, also
+
+      Rmdir(self, dirname, force=False)
+      Deletes directory dirname. If force is True, Rmdir works like a rm -rf
+
+      PrettyList(self,dir=None)
+      Shows a pretty directory listing for dir or the current working directory
